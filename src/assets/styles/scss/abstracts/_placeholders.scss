@@ -1,0 +1,6 @@
+@use "./variables" as *;
+
+%calendar-layout {
+    width: $calendar-width;
+    margin: 0 auto;
+}

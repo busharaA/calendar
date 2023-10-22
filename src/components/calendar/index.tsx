@@ -12,14 +12,17 @@ const Calendar = (): React.JSX.Element => {
     const daysOfWeek = eachDayOfInterval({ start: new Date(), end: new Date().setDate( new Date().getDate() + 6) });
     const weekdays = daysOfWeek.map((day) => format(day, "iiii", { locale: enUS, weekStartsOn: 1 }));
     console.log(weekdays);
-    
 
     return (
         <>
             <div className="header">
-                <button className="switch-month">Previous</button>
+                <button className="switch-month">
+                    Previous
+                </button>
                 <h1 className="current-month">{format(activeDate, "MMMM yyyy")}</h1>
-                <button className="switch-month">Next</button>
+                <button className="switch-month">
+                    Next
+                </button>
             </div>
             <table className="calendar-table">
                 <thead>

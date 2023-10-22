@@ -1,0 +1,31 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/placeholders" as *;
+
+.header {
+    @extend %calendar-layout;
+    padding: 25px 40px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .switch-month {
+        padding: 10px;
+        border: none;
+        background-color: $transparent-white;
+        border-radius: 20px;
+        color: $white;
+    }
+
+    .current-month {
+        font-weight: 300;
+    }
+}
+
+.calendar-table {
+    @extend %calendar-layout;
+
+    thead {
+        background-color: $transparent-white;
+    }
+}

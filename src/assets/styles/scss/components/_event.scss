@@ -1,0 +1,8 @@
+@use "../abstracts/variables" as *;
+
+.event {
+    background-color: $white;
+    color: $purple;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
