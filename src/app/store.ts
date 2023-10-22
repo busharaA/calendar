@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
+import dateTimeReducer from "../features/dateTime/dateTimeSlice"
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    dateTime: dateTimeReducer,
+  },
 })
 
 export type AppDispatch = typeof store.dispatch

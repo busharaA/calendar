@@ -2,7 +2,7 @@ import Event from "../event";
 
 const Days = (): React.JSX.Element => {
     return (
-        <tr> {/* maybe <tr> should be in Calendar */}
+        <tr>
             <td className="day">
                 {}
                 <Event /> {/* if event is in the same day as in the current state of this component, show this component */}
