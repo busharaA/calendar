@@ -50,10 +50,12 @@
         align-items: flex-start;
         border-collapse: collapse;
         border: 1px solid $transparent-white;
+        text-align: center;
 
         .day-num {
             padding: 9px 10px;
             border-radius: 50%;
+            width: 40px;
         }
 
         .selected-day {
