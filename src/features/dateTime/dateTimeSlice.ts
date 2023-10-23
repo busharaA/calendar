@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
 export interface DateTimeState {
@@ -14,9 +14,19 @@ const initialState: DateTimeState = {
 export const dateTimeSlice = createSlice({
     name: "dateTime",
     initialState,
-    reducers: {}
+    reducers: {
+        setSelectedDate: (state, action: PayloadAction<Date>) => {
+            state.selectedDate = action.payload;
+        },
+        setActiveDate: (state, action: PayloadAction<Date>) => {
+            state.activeDate = action.payload;
+        }
+    }
 });
 
+export const { setSelectedDate, setActiveDate } = dateTimeSlice.actions;
+
 export const selectActiveDate = (state: RootState) => state.dateTime.activeDate;
+export const selectSelectedDate = (state: RootState) => state.dateTime.selectedDate;
 
 export default dateTimeSlice.reducer;
