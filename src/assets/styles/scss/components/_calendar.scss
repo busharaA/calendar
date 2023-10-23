@@ -14,7 +14,9 @@
         border: none;
         background-color: $transparent-white;
         border-radius: 20px;
+        width: 35px;
         color: $white;
+        cursor: pointer;
     }
 
     .current-month {
@@ -24,8 +26,46 @@
 
 .calendar-table {
     @extend %calendar-layout;
+    background-color: $transparent-white;
 
-    thead {
-        background-color: $transparent-white;
+    .weekdays {
+
+        tr {
+            padding: 8px;
+        }
+    }
+
+    tr {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .day {
+        height: 95px;
+        padding: 5px;
+        background-color: $purple;
+        cursor: pointer;
+        display: flex;
+        justify-content: right;
+        align-items: flex-start;
+        border-collapse: collapse;
+        border: 1px solid $transparent-white;
+
+        .day-num {
+            padding: 9px 10px;
+            border-radius: 50%;
+        }
+
+        .selected-day {
+            background-color: #b3255e;
+            box-shadow: 0 2px 8 -2 hsl(336, 52%, 33%);
+        }
+    
+        .today {
+            background-color: $transparent-white;
+        }
     }
 }
+
+
+// #AD1250 - current day color
