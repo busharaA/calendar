@@ -1,7 +1,6 @@
 @use "../abstracts/variables" as *;
 
-.App {
+body, .App {
     background-color: $purple;
     color: $white;
-    height: 100vh;
 }

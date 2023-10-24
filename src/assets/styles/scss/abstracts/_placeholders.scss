@@ -4,3 +4,8 @@
     width: $calendar-width;
     margin: 0 auto;
 }
+
+%calendar-rows {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}

@@ -12,7 +12,7 @@
     .switch-month {
         padding: 10px;
         border: none;
-        background-color: $transparent-white;
+        background-color: $light-purple;
         border-radius: 20px;
         width: 35px;
         color: $white;
@@ -26,18 +26,19 @@
 
 .calendar-table {
     @extend %calendar-layout;
-    background-color: $transparent-white;
+    background-color: $light-purple;
+    border: 2px solid $light-purple;
 
     .weekdays {
 
-        tr {
+        .weekday {
             padding: 8px;
+            text-align: center;
         }
     }
 
-    tr {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
+    .weekdays, .weeks {
+        @extend %calendar-rows;
     }
 
     .day {
@@ -49,7 +50,7 @@
         justify-content: right;
         align-items: flex-start;
         border-collapse: collapse;
-        border: 1px solid $transparent-white;
+        border: 1px solid $light-purple;
         text-align: center;
 
         .day-num {
@@ -59,15 +60,16 @@
         }
 
         .selected-day {
-            background-color: #b3255e;
-            box-shadow: 0 2px 8 -2 hsl(336, 52%, 33%);
+            background-color: #b3255e !important;
+            box-shadow: 0px 0px 8px hsl(336, 76%, 52%);
         }
     
         .today {
-            background-color: $transparent-white;
+            background-color: $light-purple;
+        }
+
+        .inactive-day {
+            visibility: hidden;
         }
     }
 }
-
-
-// #AD1250 - current day color
