@@ -6,6 +6,8 @@ const Calendar = (): React.JSX.Element => {
     const activeDate = useAppSelector(selectActiveDate);
     const selectedDate = useAppSelector(selectSelectedDate);
 
+    const activeDateNumToDate = new Date(activeDate);
+
     const dispatch = useAppDispatch();
 
     const getWeekDays = (): string[] => {
@@ -21,18 +23,19 @@ const Calendar = (): React.JSX.Element => {
 
     // One week
     const generateDatesForCurrentWeek = (date: Date, selectedDate: Date, activeDate: Date): React.JSX.Element[] => {
-        let currentDate = date;
+        let currentDate = startOfWeek(date, { weekStartsOn: 1 });
         const week = [];
         for (let day = 0; day < 7; day++) {
-            const cloneDate = currentDate;
-            if (isSameMonth(currentDate, activeDate)) {
-                week.push(
-                    <td key={format(currentDate, "d")} className={`day ${isSameDay(currentDate, selectedDate) ? "selected-day" : ""} ${isSameDay(currentDate, new Date()) ? "today": ""}`}
-                    onClick={() => dispatch(setSelectedDate(cloneDate))}>
+            const cloneDate = Date.parse(currentDate.toDateString());
+            week.push(isSameMonth(currentDate, activeDate) ? 
+                <td key={format(currentDate, "d")} className="day"
+                onClick={() => dispatch(setSelectedDate(cloneDate))}>
+                    <div className={`day-num ${isSameDay(currentDate, selectedDate) ? "selected-day" : ""} ${isSameDay(currentDate, new Date()) ? "today": ""}`}>
                         {format(currentDate, "d")}
-                    </td>
-                );
-            }
+                    </div>
+                </td> :
+                <td key={format(currentDate, "do")} className="day"></td>
+            );
 
             currentDate = addDays(currentDate, 1);
             
@@ -52,7 +55,7 @@ const Calendar = (): React.JSX.Element => {
         const allWeeks: React.JSX.Element[] = [];
 
         while (currentDate <= endDate) {
-            generateDatesForCurrentWeek(currentDate, selectedDate, activeDate).map((week) => {
+            generateDatesForCurrentWeek(currentDate, new Date(selectedDate), activeDateNumToDate).map((week) => {
                 allWeeks.push(week);
             })
 
@@ -65,16 +68,16 @@ const Calendar = (): React.JSX.Element => {
     return (
         <>
             <div className="header">
-                <button className="switch-month" onClick={() => dispatch(setActiveDate(subMonths(activeDate, 1)))}>
-                    Previous
+                <button className="switch-month" onClick={() => dispatch(setActiveDate(Date.parse(subMonths(activeDateNumToDate, 1).toDateString())))}>
+                    <i className="fa-solid fa-chevron-left"></i>
                 </button>
                 <h1 className="current-month">{format(activeDate, "MMMM yyyy")}</h1>
-                <button className="switch-month" onClick={() => dispatch(setActiveDate(addMonths(activeDate, 1)))}>
-                    Next
+                <button className="switch-month" onClick={() => dispatch(setActiveDate(Date.parse(addMonths(activeDateNumToDate, 1).toDateString())))}>
+                    <i className="fa-solid fa-chevron-right"></i>
                 </button>
             </div>
             <table className="calendar-table">
-                <thead>
+                <thead className="weekdays">
                     <tr>
                         {getWeekDays().map((weekday) => (
                             <th key={weekday} className="weekday">{weekday}</th>

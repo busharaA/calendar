@@ -2,23 +2,23 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
 export interface DateTimeState {
-    selectedDate: Date;
-    activeDate: Date;
+    selectedDate: number;
+    activeDate: number;
 }
 
 const initialState: DateTimeState = {
-    selectedDate: new Date(),
-    activeDate: new Date()
+    selectedDate: Date.parse(new Date().toDateString()),
+    activeDate: Date.parse(new Date().toDateString()),
 };
 
 export const dateTimeSlice = createSlice({
     name: "dateTime",
     initialState,
     reducers: {
-        setSelectedDate: (state, action: PayloadAction<Date>) => {
+        setSelectedDate: (state, action: PayloadAction<number>) => {
             state.selectedDate = action.payload;
         },
-        setActiveDate: (state, action: PayloadAction<Date>) => {
+        setActiveDate: (state, action: PayloadAction<number>) => {
             state.activeDate = action.payload;
         }
     }
