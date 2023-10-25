@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import dateTimeReducer from "../features/dateTime/dateTimeSlice"
+import commitsReducer from "../features/commits/commitsSlice"
 
 export const store = configureStore({
   reducer: {
     dateTime: dateTimeReducer,
+    commits: commitsReducer
   },
 })
 

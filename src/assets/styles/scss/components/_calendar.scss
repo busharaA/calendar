@@ -30,46 +30,15 @@
     border: 2px solid $light-purple;
 
     .weekdays {
+        @extend %calendar-rows;
 
         .weekday {
             padding: 8px;
             text-align: center;
         }
     }
+}
 
-    .weekdays, .weeks {
-        @extend %calendar-rows;
-    }
-
-    .day {
-        height: 95px;
-        padding: 5px;
-        background-color: $purple;
-        cursor: pointer;
-        display: flex;
-        justify-content: right;
-        align-items: flex-start;
-        border-collapse: collapse;
-        border: 1px solid $light-purple;
-        text-align: center;
-
-        .day-num {
-            padding: 9px 10px;
-            border-radius: 50%;
-            width: 40px;
-        }
-
-        .selected-day {
-            background-color: #b3255e !important;
-            box-shadow: 0px 0px 8px hsl(336, 76%, 52%);
-        }
-    
-        .today {
-            background-color: $light-purple;
-        }
-
-        .inactive-day {
-            visibility: hidden;
-        }
-    }
+.bottom-space {
+    height: 30px;
 }

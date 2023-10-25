@@ -1,0 +1,38 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/placeholders" as *;
+
+.weeks {
+    @extend %calendar-rows;
+
+    .day {
+        height: 115px;
+        padding: 5px;
+        background-color: $purple;
+        cursor: pointer;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        border-collapse: collapse;
+        border: 1px solid $light-purple;
+        text-align: center;
+    
+        .day-num {
+            padding: 9px 10px;
+            border-radius: 50%;
+            width: 40px;
+        }
+    
+        .selected-day {
+            background-color: #b3255e !important;
+            box-shadow: 0px 0px 8px hsl(336, 76%, 52%);
+        }
+    
+        .today {
+            background-color: $light-purple;
+        }
+    
+        .inactive-day {
+            visibility: hidden;
+        }
+    }
+}

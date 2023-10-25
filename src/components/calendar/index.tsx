@@ -1,10 +1,10 @@
-import { addDays, addMonths, endOfMonth, endOfWeek, format, isSameDay, isSameMonth, startOfMonth, startOfWeek, subMonths } from "date-fns";
+import { addDays, addMonths, format, startOfWeek, subMonths } from "date-fns";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectActiveDate, selectSelectedDate, setActiveDate, setSelectedDate } from "../../features/dateTime/dateTimeSlice";
+import { selectActiveDate, setActiveDate } from "../../features/dateTime/dateTimeSlice";
+import Dates from "../dates";
 
 const Calendar = (): React.JSX.Element => {
     const activeDate = useAppSelector(selectActiveDate);
-    const selectedDate = useAppSelector(selectSelectedDate);
 
     const activeDateNumToDate = new Date(activeDate);
 
@@ -19,41 +19,6 @@ const Calendar = (): React.JSX.Element => {
             );
         }
         return weekdays;
-    };
-
-    const getDates = (): React.JSX.Element => {
-        const startOfSelectedMonth = startOfMonth(activeDate);
-        const endOfSelectedMonth = endOfMonth(activeDate);
-        const startDate = startOfWeek(startOfSelectedMonth, { weekStartsOn: 1 });
-        const endDate = endOfWeek(endOfSelectedMonth);
-
-        const dateFormat = "d";
-        const rows = [];
-
-        let days = [];
-        let day = startDate;
-        let formattedDate = "";
-
-        while (day <= endDate) {
-            for (let i = 0; i < 7; i++) {
-                formattedDate = format(day, dateFormat);
-                const cloneDay = day;
-                days.push(
-                    <div className="day"  key={day.toDateString()} onClick={() => dispatch(setSelectedDate(Date.parse(cloneDay.toDateString())))}>
-                        <span className={`day-num ${!isSameMonth(day, startOfSelectedMonth)? "inactive-day" : ""} ${isSameDay(day, new Date()) ? "today" : ""} ${isSameDay(day, selectedDate) ? "selected-day" : ""}`}>{formattedDate}</span>
-                    </div>
-                );
-                day = addDays(day, 1);
-            }
-            rows.push(
-                <div className="weeks" key={day.toDateString()}>
-                    {days}
-                </div>
-            );
-            days = [];
-        }
-
-        return <>{rows}</>
     };
 
     return (
@@ -73,8 +38,9 @@ const Calendar = (): React.JSX.Element => {
                         <div key={weekday} className="weekday">{weekday}</div>
                     ))}
                 </div>
-                {getDates()}
+                <Dates />
             </section>
+            <div className="bottom-space"></div>
         </>
     );
 }
