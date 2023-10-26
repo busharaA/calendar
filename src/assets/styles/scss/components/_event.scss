@@ -1,14 +1,16 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/placeholders" as *;
+@use "../abstracts/mixins" as *;
 
 .event {
-    @extend %white-bg-components;
-    border-radius: 5px;
+    @extend %purple-bg-components;
+    border-radius: 20px;
     padding: 5px 10px;
-    height: 62px;
-    width: 130.28px;
+    height: 20px;
+    width: 20px;
     border: none;
     cursor: pointer;
+    margin: 0 auto;
 
     p {
         font-size: 12px;
@@ -20,13 +22,40 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+        visibility: hidden;
 
         &:first-of-type {
             height: 3em;
+            font-weight: 500;
         }
     }
     
     &:not(.event:first-of-type) {
         display: none;
+    }
+}
+
+@include breakpoints(768px) {
+    .event {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@include breakpoints(992px) {
+    .event {
+        width: 102px;
+        height: 62px;
+        border-radius: 5px;
+
+        p {
+            visibility: visible;
+        }
+    }
+}
+
+@include breakpoints(1200px) {
+    .event {
+        width: 130.28px;
     }
 }

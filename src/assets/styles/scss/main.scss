@@ -1,5 +1,7 @@
 // 1. ABSTRACTS
 @use "abstracts/variables";
+@use "abstracts/placeholders";
+@use "abstracts/mixins";
 // 2. VENDORS
 @use "../fontawesome/scss/fontawesome.scss";
 @use "../fontawesome/scss/solid.scss";

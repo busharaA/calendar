@@ -1,0 +1,10 @@
+@mixin calendar-layout($calendar-width) {
+    width: $calendar-width;
+    margin: 0 auto;
+}
+
+@mixin breakpoints ($width) {
+    @media screen and (min-width: $width) {
+        @content
+    }
+}

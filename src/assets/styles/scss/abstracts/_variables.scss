@@ -1,4 +1,19 @@
-$calendar-width: 1000px;
+// Sizing values
+$calendar-width-full: 1000px;
+$calendar-width-lg: 800px;
+$calendar-width-md: 600px;
+$calendar-width-sm: 400px;
+
+$calendar-width: (
+    'full': 1000px,
+    'lg': 800px,
+    'md': 600px,
+    'sm': 400px
+);
+
+// Colors
 $white: white;
+$light-gray: #e9e9e9;
 $purple: #4520a1;
-$light-purple: #704fc4;
+$light-purple: #b5a0eb;
+$dark-magenta: #a7218a;

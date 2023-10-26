@@ -1,45 +1,91 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/placeholders" as *;
+@use "../abstracts/mixins" as *;
 
 .modal-background {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+    display: flex;
+    justify-content: center;
 
     .details-modal {
-        @extend %white-bg-components;
-        width: 500px;
-        margin: 215px 31.5%;
+        @extend %purple-bg-components;
+        width: 300px;
         padding: 15px;
+        margin-top: 215px;
         border-radius: 10px;
         position: fixed;
+        font-weight: 300;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, $purple, $dark-magenta);
+            filter: blur(4px);
+            border-radius: 10px;
+        }
 
         .details-modal__header {
             display: flex;
             justify-content: space-between;
             align-items: center;
 
-            h3 {
-                font-weight: 400;
+            p {
+                font-size: 14px;
             }
 
             .details-modal__close {
                 border: none;
                 background-color: transparent;
-                color: $purple;
                 font-size: 18px;
+                color: $white;
                 cursor: pointer;
             }
         }
 
+        h2, span {
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
         .details-modal__line {
-            width: 470px;
+            width: 270px;
             height: 1px;
             margin: 10px auto;
             background-color: #ccc;
         }
+    }
+}
+
+@include breakpoints(768px) {
+    .modal-background {
+        height: 100%;
+
+        .details-modal {
+        width: 500px;
+
+        .details-modal__header {
+            p {
+                font-size: 18px;
+            }
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        .details-modal__line {
+            width: 470px;
+        }
+    }
     }
 }

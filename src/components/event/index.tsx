@@ -10,7 +10,7 @@ const Event = ({ commit }: IEvent ): React.JSX.Element => {
     return (
         <button className="event" onClick={() => dispatch(setCommitDetails(commit))}>
             <p>
-                <b>{commit.message}</b>
+                {commit.message}
             </p>
             <p>{format(new Date(commit.date), "p", { locale: hr })}</p>
         </button>

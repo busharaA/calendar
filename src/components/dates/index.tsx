@@ -24,7 +24,7 @@ const Dates = (): React.JSX.Element => {
             formattedDate = format(day, "d");
             days.push(
                 <div className="day" key={day.toDateString()}>
-                    <span className={`day-num ${!isSameMonth(day, startOfSelectedMonth)? "inactive-day" : ""} ${isSameDay(day, new Date()) ? "today" : ""}`}>{formattedDate}</span>
+                    <span className={`day__number ${!isSameMonth(day, startOfSelectedMonth)? "day_display_inactive" : ""} ${isSameDay(day, new Date()) ? "day_display_today" : ""}`}>{formattedDate}</span>
                     {commits.map((commit) => (
                         (isSameDay(day, new Date(commit.date)) && isSameMonth(day, startOfSelectedMonth)) && <Event key={commit.date} commit={commit} />
                     ))}

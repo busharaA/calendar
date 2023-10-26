@@ -12,7 +12,7 @@ const DetailsModal = (): React.JSX.Element => {
         <div className="modal-background" onClick={() => dispatch(clearCommitDetails())}>
             <div className="details-modal" onClick={(e) => e.stopPropagation()}>
                 <div className="details-modal__header">
-                    <h3>Commit message</h3>
+                    <p>Commit message</p>
                     <button className="details-modal__close" onClick={() =>dispatch(clearCommitDetails())}>
                         <i className="fa-solid fa-xmark"></i>
                     </button>
@@ -20,8 +20,8 @@ const DetailsModal = (): React.JSX.Element => {
                 <h2>{commitDetails.message}</h2>
                 <div className="details-modal__line"></div>
                 <div className="details-modal__info">
-                    <p><b>Author: </b>{commitDetails.name}</p>
-                    <p><b>Date: </b>{format(new Date(commitDetails.date), "Pp", { locale: hr })}</p>
+                    <p><span>Author: </span>{commitDetails.name}</p>
+                    <p><span>Date: </span>{format(new Date(commitDetails.date), "Pp", { locale: hr })}</p>
                 </div>
             </div>
         </div>

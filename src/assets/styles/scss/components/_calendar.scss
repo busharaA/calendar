@@ -1,31 +1,34 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/placeholders" as *;
+@use "../abstracts/mixins" as *;
+
+.header, .calendar-table {
+    @include calendar-layout($calendar-width-sm);
+}
 
 .header {
-    @extend %calendar-layout;
-    padding: 25px 40px;
+    padding: 25px 10px;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .switch-month {
+    .header__switch-month {
         padding: 10px;
         border: none;
         background-color: $light-purple;
         border-radius: 20px;
         width: 35px;
-        color: $white;
         cursor: pointer;
     }
 
-    .current-month {
+    .header__current-month {
         font-weight: 300;
+        color: $purple;
     }
 }
 
 .calendar-table {
-    @extend %calendar-layout;
     background-color: $light-purple;
     border: 2px solid $light-purple;
 
@@ -41,4 +44,30 @@
 
 .bottom-space {
     height: 30px;
+}
+
+@include breakpoints(768px) {
+    .header, .calendar-table {
+        @include calendar-layout($calendar-width-md);
+    }
+
+    .header {
+        padding: 25px 20px;
+    }
+}
+
+@include breakpoints(992px) {
+    .header, .calendar-table {
+        @include calendar-layout($calendar-width-lg);
+    }
+
+    .header {
+        padding: 25px 40px;
+    }
+}
+
+@include breakpoints(1200px) {
+    .header, .calendar-table {
+        @include calendar-layout($calendar-width-full);
+    }
 }
