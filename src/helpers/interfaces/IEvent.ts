@@ -1,4 +1,5 @@
+import { ICommit } from "./ICommit";
+
 export interface IEvent {
-    date: string;
-    message: string;
+    commit: ICommit;
 }

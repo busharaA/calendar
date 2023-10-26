@@ -1,16 +1,19 @@
 import { format } from "date-fns";
-import { IEvent } from "../../helpers/interfaces/IEvent";
 import { hr } from "date-fns/locale";
+import { IEvent } from "../../helpers/interfaces/IEvent";
+import { useAppDispatch } from "../../app/hooks";
+import { setCommitDetails } from "../../features/commits/commitsSlice";
 
-const Event = ({ date, message }: IEvent): React.JSX.Element => {
+const Event = ({ commit }: IEvent ): React.JSX.Element => {
+    const dispatch = useAppDispatch();
 
     return (
-        <div className="event">
+        <button className="event" onClick={() => dispatch(setCommitDetails(commit))}>
             <p>
-                <b>{message}</b>
+                <b>{commit.message}</b>
             </p>
-            <p>{format(new Date(date), "p", { locale: hr })}</p>
-        </div>
+            <p>{format(new Date(commit.date), "p", { locale: hr })}</p>
+        </button>
     )
 }
 
