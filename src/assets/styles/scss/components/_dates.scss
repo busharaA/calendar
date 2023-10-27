@@ -33,6 +33,14 @@
     }
 }
 
+.weeks:last-of-type .day:first-of-type {
+    border-bottom-left-radius: 10px;
+}
+
+.weeks:last-of-type .day:last-of-type {
+    border-bottom-right-radius: 10px;
+}
+
 @include breakpoints(768px) {
     .weeks {
         .day {
