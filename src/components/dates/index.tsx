@@ -1,12 +1,12 @@
 import { addDays, endOfMonth, endOfWeek, format, isSameDay, isSameMonth, startOfMonth, startOfWeek } from "date-fns";
 import { useAppSelector } from "../../app/hooks";
 import { selectActiveDate } from "../../features/dateTime/dateTimeSlice";
-import { selectCommit } from "../../features/commits/commitsSlice";
 import Event from "../event";
+import { selectHoliday } from "../../features/commits/holidaysSlice";
 
 const Dates = (): React.JSX.Element => {
     const activeDate = useAppSelector(selectActiveDate);
-    const commits = useAppSelector(selectCommit);
+    const holidays = useAppSelector(selectHoliday);
 
     const startOfSelectedMonth = startOfMonth(activeDate);
     const endOfSelectedMonth = endOfMonth(activeDate);
@@ -25,8 +25,8 @@ const Dates = (): React.JSX.Element => {
             days.push(
                 <div className="day" key={day.toDateString()}>
                     <span className={`day__number ${!isSameMonth(day, startOfSelectedMonth)? "day_display_inactive" : ""} ${isSameDay(day, new Date()) ? "day_display_today" : ""}`}>{formattedDate}</span>
-                    {commits.map((commit) => (
-                        (isSameDay(day, new Date(commit.date)) && isSameMonth(day, startOfSelectedMonth)) && <Event key={commit.date} commit={commit} />
+                    {holidays.map((holiday) => (
+                        (isSameDay(day, new Date(holiday.date)) && isSameMonth(day, startOfSelectedMonth)) && <Event key={holiday.date} holiday={holiday} />
                     ))}
                 </div>
             );

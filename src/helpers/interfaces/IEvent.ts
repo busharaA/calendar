@@ -1,5 +1,5 @@
-import { ICommit } from "./ICommit";
+import { IHolidays } from "./IHolidays";
 
 export interface IEvent {
-    commit: ICommit;
+    holiday: IHolidays;
 }

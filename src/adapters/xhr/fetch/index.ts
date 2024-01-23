@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../../../helpers/constants/githubEndpoint"
+import { API_BASE_URL } from "../../../helpers/constants/holidaysEndpoint"
 
 export const getResource = (url: string) => {
     return fetch(`${API_BASE_URL}${url}`)

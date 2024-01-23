@@ -2,17 +2,17 @@ import { format } from "date-fns";
 import { hr } from "date-fns/locale";
 import { IEvent } from "../../helpers/interfaces/IEvent";
 import { useAppDispatch } from "../../app/hooks";
-import { setCommitDetails } from "../../features/commits/commitsSlice";
+import { setHolidayDetails } from "../../features/commits/holidaysSlice";
 
-const Event = ({ commit }: IEvent ): React.JSX.Element => {
+const Event = ({ holiday }: IEvent ): React.JSX.Element => {
     const dispatch = useAppDispatch();
 
     return (
-        <button className="event" onClick={() => dispatch(setCommitDetails(commit))}>
+        <button className="event" onClick={() => dispatch(setHolidayDetails(holiday))}>
             <p>
-                {commit.message}
+                {holiday.name}
             </p>
-            <p>{format(new Date(commit.date), "p", { locale: hr })}</p>
+            <p>{format(new Date(holiday.date), "p", { locale: hr })}</p>
         </button>
     )
 }
